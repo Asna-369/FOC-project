@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BMI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("D:/black.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 50px 20px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.2em;
+    }
+
+    .links {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .links a {
+      color: yellow;
+      text-decoration: none;
+      font-weight: bold;
+      display: block;
+      margin: 5px 0;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .bmi-image {
+      max-width: 500px;
+      width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="container">
+      <h1>BMI Calculator</h1>
+      <form id="bmiForm">
+        <label for="height">Height (in cm):</label>
+        <input type="number" id="height" required />
+
+        <label for="weight">Weight (in kg):</label>
+        <input type="number" id="weight" required />
+
+        <button type="submit">Calculate BMI</button>
+      </form>
+      <div id="result"></div>
+
+      <div class="links">
+        <a style="color:blue" href="https://www.hopkinsmedicine.org/health/conditions-and-diseases/obesity/preventing-obesity" target="_blank">
+          How to reduce obesity
+        </a>
+        <a style="color:blue"  href="https://www.healthline.com/nutrition/how-to-gain-weight" target="_blank">
+          How to increase weight
+        </a>
+      </div>
+    </div>
+
+    <img src="D:/BMIimage.jpg" alt="Know Your BMI" class="bmi-image" height="500px" weight="700px"/>
+  <div>
+<a style="color:White" href="https://www.verywellfit.com/essential-yoga-poses-for-beginners-3566747" target="_blank">
+         ✨ EXERCISE
+        </a>
+<br>
+<a style="color:White" href="https://www.healthline.com/nutrition/healthy-eating-tips#foods-to-add" target="_blank">
+         ✨ FOOD HABITS
+        </a>
+</div>
+  <script>
+    document.getElementById('bmiForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const height = parseFloat(document.getElementById('height').value) / 100;
+      const weight = parseFloat(document.getElementById('weight').value);
+
+      if (!height || !weight || height <= 0 || weight <= 0) {
+        document.getElementById('result').textContent = "Please enter valid values!";
+        return;
+      }
+
+      const bmi = (weight / (height * height)).toFixed(2);
+      let message = "";
+
+      if (bmi < 18.5) {
+        message = "Underweight";
+      } else if (bmi < 24.9) {
+        message = "Normal weight";
+      } else if (bmi < 29.9) {
+        message = "Overweight";
+      } else {
+        message = "Obese";
+      }
+
+      document.getElementById('result').textContent = `Your BMI is ${bmi} (${message})`;
+    });
+  </script>
+
+
+</body>
+</html>
